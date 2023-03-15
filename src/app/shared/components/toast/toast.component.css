@@ -1,0 +1,12 @@
+:host {
+    margin: 0;
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+ngb-toast {
+    background-color: #dbdcbc;
+}
