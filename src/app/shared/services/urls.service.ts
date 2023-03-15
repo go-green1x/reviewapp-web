@@ -28,7 +28,7 @@ export class UrlsService {
   public header() {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': JSON.parse(localStorage.getItem("LoggedInUser")!).token
+      'Authorization': 'token ' + JSON.parse(localStorage.getItem("LoggedInUser")!).token
     });
     return headers;
   }

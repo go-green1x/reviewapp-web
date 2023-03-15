@@ -39,6 +39,7 @@ export class SigninComponent {
               form.reset();
               localStorage.setItem("LoggedInUser", JSON.stringify(result.body));
               this.auth.setTokenExpiry();
+              this.auth.user = this.auth.setUserDetails();
               this.route.navigateByUrl('/');
             }
             else {

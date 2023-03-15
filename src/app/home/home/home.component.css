@@ -1,0 +1,65 @@
+.section-1 {
+    background-color: #6d4aff5e;
+    padding: 2rem;
+  }
+  
+  .section-2 {
+    background-color: #6d4aff85;
+    padding: 2rem;
+  }
+  
+  .section-3 {
+    background-color: #eceeef;
+    padding: 2rem;
+  }
+  
+  .section-4 {
+    background-color: #292b2c!important;
+  }
+  
+  .coolStuffBtn {
+    color: #ffffff;
+    display: block;
+    margin: auto;
+  }
+  
+  .coolStuffWrapper {
+    margin-top: 20px;
+  }
+  
+  .imgCenter {
+    display: block;
+    margin: auto;
+  }
+  
+  .btnCenter {
+    display: block;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    width: 54%;
+  }
+  
+  .footerImg {
+    padding: 15px;
+  }
+  
+  .fa {
+    margin: 10px;
+  }
+  
+  .fa-facebook-square {
+    color: #3b5998;
+  }
+  
+  .fa-google-plus-square {
+    color: #c32f10;
+  }
+  
+  .fa-instagram {
+    color: #ffffff;
+  }
+  
+  .socialWrapper {
+    margin: auto;
+  }

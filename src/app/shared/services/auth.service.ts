@@ -14,6 +14,7 @@ export class AuthService {
   token: any = null;
   tokenDecoded: any;
   expiryTime: any;
+  user: any;
 
   constructor(public urls: UrlsService, private bconn: BasicService) { }
 
@@ -27,12 +28,27 @@ export class AuthService {
   }
 
   logout() {
-    return this.bconn.get(this.urls.logout(), this.urls.header(), '', 0);
+    const body = {};
+    return this.bconn.post(this.urls.logout(), body, this.urls.header(), '', 1000, EMessages.SOMETHING_WENT_WRONG);
   }
 
   getToken() {
     if (JSON.parse(localStorage.getItem("LoggedInUser")!)) {
       return JSON.parse(localStorage.getItem("LoggedInUser")!).token;
+    }
+    return null;
+  }
+
+  getTokenExpiry() {
+    if (JSON.parse(localStorage.getItem("LoggedInUser")!)) {
+      return JSON.parse(localStorage.getItem("LoggedInUser")!).expiry;
+    }
+    return null;
+  }
+
+  setUserDetails() {
+    if (JSON.parse(localStorage.getItem("LoggedInUser")!)) {
+      return JSON.parse(localStorage.getItem("LoggedInUser")!).userDetails;
     }
     return null;
   }
@@ -65,8 +81,7 @@ export class AuthService {
   setTokenExpiry() {
     this.token = this.getToken();
     if (this.token != null) {
-      this.tokenDecoded = JSON.parse(atob(this.token.split('.')[1]));
-      this.expiryTime = this.tokenDecoded.expiry * 1000;
+      this.expiryTime = new Date(this.getTokenExpiry()).getTime();
       this.isLoggedIn = true;
     }
   }

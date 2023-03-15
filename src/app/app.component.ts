@@ -12,6 +12,7 @@ export class AppComponent {
   constructor(public auth: AuthService) { }
 
   ngOnInit(): void {
+    console.log(this.auth.isLoggedIn);
     this.auth.authFlow();
   }
 
