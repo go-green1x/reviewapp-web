@@ -1,0 +1,52 @@
+ .signup-container {
+    height: 100vh;
+}
+
+.signup {
+    height: 100%;
+}
+
+.signup-left {
+    font-size: 100px;
+    color: #6d4aff;
+}
+
+.file-input {
+    width: 100%;
+}
+
+.file-input::-webkit-file-upload-button {
+    visibility: hidden;
+}
+.file-input::before {
+    content: 'Select Profile Picture';
+    display: inline-block;
+    background-color: #6d4aff;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.file-input:hover::before {
+    background-color: #0069d9;
+}
+.file-input:active::before {
+    background-color: #0062cc;
+}
+
+form {
+  height: 100%;
+}
+
+.row {
+  padding: 2%;
+  overflow:auto; 
+}
+
+label {
+  font-weight: bold;
+}
+
+.error-message {
+    color:red;
+}

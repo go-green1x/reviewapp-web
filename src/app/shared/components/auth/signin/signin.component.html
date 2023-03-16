@@ -16,7 +16,8 @@ style="background-image: url('assets/wallpaper1.jpg');">
       </div>
       <div class="form-group d-flex justify-content-center flex-column align-items-center">
         <button type="submit" class="btn">Sign in</button>
-        <p class="signup m-auto pt-2">Create Account</p>
+        <p class="signup m-auto pt-2" [routerLink]="['/'+routes_url.AUTH + '/' + routes_url.SIGN_UP]">
+          Create Account</p>
       </div>
     </form>
   </div>

@@ -9,7 +9,7 @@ import { EMessages } from 'src/app/shared/constants/constants';
 })
 export class AuthService {
 
-  
+
   isLoggedIn: boolean = false;
   token: any = null;
   tokenDecoded: any;
@@ -18,13 +18,33 @@ export class AuthService {
 
   constructor(public urls: UrlsService, private bconn: BasicService) { }
 
-  login(username:any, password:any) {
+  login(username: any, password: any) {
     const body = {
-      "username":username,
-      "password":password
-  }
+      "username": username,
+      "password": password
+    }
 
     return this.bconn.post(this.urls.login(), body, this.urls.headerBeforeAuth(), '', 1000, EMessages.SOMETHING_WENT_WRONG);
+  }
+
+  signup(username: any, password: any, email: any, first_name: any, last_name: any, date_of_birth: any,
+    address: any, city: any, country: any, upload: any) {
+    const body = {
+      "username": username,
+      "password": password,
+      "email": email,
+      "first_name": first_name,
+      "last_name": last_name,
+      "profile": {
+        "date_of_birth": date_of_birth,
+        "address": address,
+        "city": city,
+        "country": country,
+        "upload": upload
+      }
+    }
+
+    return this.bconn.post(this.urls.signup(), body, this.urls.headerBeforeAuth(), '', 1000, EMessages.SOMETHING_WENT_WRONG);
   }
 
   logout() {
@@ -88,6 +108,7 @@ export class AuthService {
 
   authFlow() {
     this.setTokenExpiry();
+    this.user = this.setUserDetails();
     this.logoutIfTokenExpired;
   }
 }

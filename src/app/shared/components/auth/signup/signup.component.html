@@ -1,0 +1,130 @@
+<div class="container-fluid signup-container" style="background-image: url('assets/wallpaper1.jpg');">
+  <div class="row signup">
+    <div class="col-md-4 d-flex justify-content-center align-items-center">
+      <h1 class="d-flex align-items-center signup-left">Sign up</h1>
+    </div>
+    <div class="col-md-8">
+      <form [formGroup]="signupform" (ngSubmit)="onSubmit(form)" #form>
+        <div class="row">
+          <div class="col">
+            <label for="username">Username:</label>
+            <input type="text" class="form-control" placeholder="Username" formControlName="username">
+            <div class="validation-errors">
+              <ng-container *ngFor="let validation of ValidationMessagesRef.username">
+                <div class="error-message" *ngIf="this.signupform.controls?.['username']?.hasError(validation.type) && (this.signupform.controls?.['username']?.touched)">
+                  {{ validation.message }}
+                </div>
+              </ng-container>
+            </div>            
+          </div>
+          <div class="col">
+            <label for="fullname">Fullname:</label>
+            <input type="fullname" class="form-control" placeholder="John Doe" formControlName="fullName">
+            <div class="validation-errors">
+              <ng-container *ngFor="let validation of ValidationMessagesRef.fullName">
+                <div class="error-message" *ngIf="this.signupform.controls?.['fullName']?.hasError(validation.type) && (this.signupform.controls?.['fullName']?.touched)">
+                  {{ validation.message }}
+                </div>
+              </ng-container>
+            </div>            
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="country">Country:</label>
+            <input type="text" class="form-control" placeholder="Country" formControlName="country" maxlength="50">
+            <div class="validation-errors">
+              <ng-container *ngFor="let validation of ValidationMessagesRef.country">
+                <div class="error-message" *ngIf="this.signupform.controls?.['country']?.hasError(validation.type) && (this.signupform.controls?.['country']?.touched)">
+                  {{ validation.message }}
+                </div>
+              </ng-container>
+            </div>            
+          </div>
+          <div class="col">
+            <label for="city">City:</label>
+            <input type="text" class="form-control" placeholder="City" formControlName="city" maxlength="50">
+            <div class="validation-errors">
+              <ng-container *ngFor="let validation of ValidationMessagesRef.city">
+                <div class="error-message" *ngIf="this.signupform.controls?.['city']?.hasError(validation.type) && (this.signupform.controls?.['city']?.touched)">
+                  {{ validation.message }}
+                </div>
+              </ng-container>
+            </div>            
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="date_of_birth">Date of Birth:</label>
+            <input type="date" class="form-control" placeholder="Date of Birth" formControlName="dateOfBirth">
+            <div class="validation-errors">
+              <ng-container *ngFor="let validation of ValidationMessagesRef.dateOfBirth">
+                <div class="error-message" *ngIf="this.signupform.controls?.['dateOfBirth']?.hasError(validation.type) && (this.signupform.controls?.['dateOfBirth']?.touched)">
+                  {{ validation.message }}
+                </div>
+              </ng-container>
+            </div>            
+          </div>
+          <div class="col">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" placeholder="abc@xyz.com" formControlName="email">
+            <div class="validation-errors">
+              <ng-container *ngFor="let validation of ValidationMessagesRef.email">
+                <div class="error-message" *ngIf="this.signupform.controls?.['email']?.hasError(validation.type) && (this.signupform.controls?.['email']?.touched)">
+                  {{ validation.message }}
+                </div>
+              </ng-container>
+            </div>            
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" placeholder="Password" formControlName="password">
+            <div class="validation-errors">
+              <ng-container *ngFor="let validation of ValidationMessagesRef.password">
+                <div class="error-message" *ngIf="this.signupform.controls?.['password']?.hasError(validation.type) && (this.signupform.controls?.['password']?.touched)">
+                  {{ validation.message }}
+                </div>
+              </ng-container>
+            </div>            
+          </div>
+          <div class="col">
+            <label for="cpassword">Confirm Password:</label>
+            <input type="password" class="form-control" placeholder="Confirm Password" formControlName="confirmPassword">
+            <div class="validation-errors">
+              <ng-container *ngFor="let validation of ValidationMessagesRef.confirmPassword">
+                <div class="error-message" *ngIf="this.signupform.controls?.['confirmPassword']?.hasError(validation.type) && (this.signupform.controls?.['confirmPassword']?.touched)">
+                  {{ validation.message }}
+                </div>
+              </ng-container>
+            </div>            
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="address">Address:</label>
+            <input type="textarea" class="form-control" placeholder="Address" formControlName="address" maxlength="100">
+            <div class="validation-errors">
+              <ng-container *ngFor="let validation of ValidationMessagesRef.address">
+                <div class="error-message" *ngIf="this.signupform.controls?.['address']?.hasError(validation.type) && (this.signupform.controls?.['address']?.touched)">
+                  {{ validation.message }}
+                </div>
+              </ng-container>
+            </div>            
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <input type="file" (change)="onFileChange($event)" class="file-input" accept="image/png, image/jpeg" formControlName="file">
+          </div>
+          <div class="col">
+          </div>
+        </div>
+        <div class="form-group d-flex justify-content-center flex-column align-items-center">
+          <button type="submit" class="btn">Sign up</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

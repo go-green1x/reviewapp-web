@@ -6,4 +6,5 @@ export enum Routes_URL {
     AUTH = 'auth',
     GALLERY = 'view',
     SIGN_IN = 'signin',
+    SIGN_UP = 'signup',
   }

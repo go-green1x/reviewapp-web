@@ -8,7 +8,8 @@ export class UrlsService {
 
   constructor() { }
 
-  url: string = 'http://192.168.0.104:8000/';
+  // url: string = 'http://192.168.0.104:8000/';
+  url: string = 'http://localhost:8000/';
 
   public headerBeforeAuth() {
     let headers = new HttpHeaders({
@@ -19,6 +20,10 @@ export class UrlsService {
 
   public login() {
     return this.url + 'auth/login/';
+  }
+
+  public signup() {
+    return this.url + 'auth/create_user/';
   }
 
   public logout() {

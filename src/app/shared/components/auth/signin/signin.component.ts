@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ToastService } from 'src/app/shared/services/toast.service';
+import { Routes_URL } from 'src/app/shared/constants/routes';
 
 @Component({
   selector: 'app-signin',
@@ -11,6 +12,7 @@ import { ToastService } from 'src/app/shared/services/toast.service';
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent {
+  public routes_url = Routes_URL;
   constructor(private fb: FormBuilder, private route: Router, private auth: AuthService,
     private ts: ToastService) {
     if (this.auth.isAuthenticated()) {
