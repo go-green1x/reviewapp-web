@@ -109,8 +109,8 @@ export class AuthService {
     this.logoutIfTokenExpired;
   }
 
-  updateProfilePic(formData: any) {
-    const body = formData 
+  updateProfilePic(data: any) {
+    const body = data 
     return this.bconn.put(this.urls.updateprofile(), body,this.urls.formHeadersAfterLogin(), '', 1000, EMessages.SOMETHING_WENT_WRONG);
   }
 
