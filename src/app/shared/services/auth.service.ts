@@ -27,24 +27,9 @@ export class AuthService {
     return this.bconn.post(this.urls.login(), body, this.urls.headerBeforeAuth(), '', 1000, EMessages.SOMETHING_WENT_WRONG);
   }
 
-  signup(username: any, password: any, email: any, first_name: any, last_name: any, date_of_birth: any,
-    address: any, city: any, country: any, upload: any) {
-    const body = {
-      "username": username,
-      "password": password,
-      "email": email,
-      "first_name": first_name,
-      "last_name": last_name,
-      "profile": {
-        "date_of_birth": date_of_birth,
-        "address": address,
-        "city": city,
-        "country": country,
-        "upload": upload
-      }
-    }
-
-    return this.bconn.post(this.urls.signup(), body, this.urls.headerBeforeAuth(), '', 1000, EMessages.SOMETHING_WENT_WRONG);
+  signup(formData: any) {
+    const body = formData 
+    return this.bconn.post(this.urls.signup(), body,this.urls.formHeadersBeforeLogin(), 'error.error.username[0]', 1000);
   }
 
   logout() {

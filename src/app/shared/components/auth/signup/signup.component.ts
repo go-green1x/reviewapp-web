@@ -47,9 +47,9 @@ export class SignupComponent {
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
       dateOfBirth: ['', Validators.required],
-      profilePic: [''],
+      profilePic: ['', Validators.required],
       fullName: ['', Validators.required],
-      file: ['']
+      file: ['', Validators.required]
     },
     {
       validator: ConfirmedValidator('password', 'confirmPassword')
@@ -60,19 +60,17 @@ export class SignupComponent {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.signupform.patchValue({
-        fileSource: file
+        profilePic: file
       });
+      console.log(this.signupform.value['profilePic']);
     }
   }
 
   onSubmit(form: any) {
+    console.log(this.signupform);
     if (this.signupform) {
       if (this.signupform.valid) {
         let username = this.signupform.value['username'];
-        const img = new FormData();
-        img.append(username, this.signupform.value['profilePic']);
-
-
         let password = this.signupform.value['password'];
         let country = this.signupform.value['country'];
         let city = this.signupform.value['city'];
@@ -84,16 +82,22 @@ export class SignupComponent {
         let first_name = fullName.split(' ')[0];
         let last_name = fullName.substring(first_name.length);
 
-        this.auth.signup(username, password, email, first_name, last_name, dateOfBirth, address,
-          city, country, img).subscribe((result: any) => {
-          if (result.status == 200) {
-            // if (result.body.hasOwnProperty('token')) {
-            //   form.reset();
-            //   this.route.navigateByUrl('/');
-            // }
-            // else {
-            //   this.ts.showToast('Something went wrong', 1000, undefined);
-            // }
+        const formData = new FormData();
+        formData.append('username', username);
+        formData.append('first_name', first_name);
+        formData.append('last_name', last_name);
+        formData.append('email', email);
+        formData.append('password', password);
+        formData.append('profile.date_of_birth', dateOfBirth);
+        formData.append('profile.address', address);
+        formData.append('profile.city', city);
+        formData.append('profile.country', country);
+        formData.append('profile.upload', this.signupform?.get('profilePic')?.value);
+
+        this.auth.signup(formData).subscribe((result: any) => {
+          if (result.status == 200 || result.status==201) {
+              form.reset();
+              this.ts.showToast('Account Created Successsfullt', 1000, undefined);
           }
         });
       }

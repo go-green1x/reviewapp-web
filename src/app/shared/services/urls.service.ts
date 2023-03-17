@@ -37,4 +37,9 @@ export class UrlsService {
     });
     return headers;
   }
+
+  public formHeadersBeforeLogin() {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'multipart/form-data');
+  }
 }
