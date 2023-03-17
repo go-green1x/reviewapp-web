@@ -8,8 +8,7 @@ import { EMessages } from 'src/app/shared/constants/constants';
   providedIn: 'root'
 })
 export class AuthService {
-
-
+  
   isLoggedIn: boolean = false;
   token: any = null;
   tokenDecoded: any;
@@ -24,7 +23,7 @@ export class AuthService {
       "password": password
     }
 
-    return this.bconn.post(this.urls.login(), body, this.urls.headerBeforeAuth(), '', 1000, EMessages.SOMETHING_WENT_WRONG);
+    return this.bconn.post(this.urls.login(), body, this.urls.headerBeforeAuth(), '', 1000, EMessages.INVALID_USERNAME_PASSWORD);
   }
 
   signup(formData: any) {
@@ -37,23 +36,36 @@ export class AuthService {
     return this.bconn.post(this.urls.logout(), body, this.urls.header(), '', 1000, EMessages.SOMETHING_WENT_WRONG);
   }
 
-  getToken() {
+  getLoggedInUser() {
     if (JSON.parse(localStorage.getItem("LoggedInUser")!)) {
-      return JSON.parse(localStorage.getItem("LoggedInUser")!).token;
+      return JSON.parse(localStorage.getItem("LoggedInUser")!);
+    }
+    return null;
+  }
+
+  getToken() {
+    let token = this.getLoggedInUser().token;
+    if (token) {
+      return token;
     }
     return null;
   }
 
   getTokenExpiry() {
-    if (JSON.parse(localStorage.getItem("LoggedInUser")!)) {
-      return JSON.parse(localStorage.getItem("LoggedInUser")!).expiry;
+    let expiry = this.getLoggedInUser().expiry;
+    if (expiry) {
+      return expiry;
     }
     return null;
   }
 
   setUserDetails() {
-    if (JSON.parse(localStorage.getItem("LoggedInUser")!)) {
-      return JSON.parse(localStorage.getItem("LoggedInUser")!).userDetails;
+    let userDetails = this.getLoggedInUser().userDetails;
+    if (userDetails) {
+      if (userDetails?.profile?.upload) {
+        userDetails.profile.upload = this.urls.url + '/' + userDetails?.profile?.upload;
+      }
+      return userDetails;
     }
     return null;
   }
@@ -95,5 +107,15 @@ export class AuthService {
     this.setTokenExpiry();
     this.user = this.setUserDetails();
     this.logoutIfTokenExpired;
+  }
+
+  updateProfilePic(formData: any) {
+    const body = formData 
+    return this.bconn.put(this.urls.updateprofile(), body,this.urls.formHeadersAfterLogin(), '', 1000, EMessages.SOMETHING_WENT_WRONG);
+  }
+
+  updateProfile(formData: any) {
+    const body = formData 
+    return this.bconn.put(this.urls.updateprofile(), body,this.urls.header(), '', 1000, EMessages.SOMETHING_WENT_WRONG);
   }
 }

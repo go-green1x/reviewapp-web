@@ -1,5 +1,6 @@
 export enum EMessages {
-    SOMETHING_WENT_WRONG = 'Something Went Wrong'
+    SOMETHING_WENT_WRONG = 'Something Went Wrong',
+    INVALID_USERNAME_PASSWORD = 'Invalid username or password'
 }
 
 export const ValidationMessages = {

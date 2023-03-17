@@ -41,5 +41,17 @@ export class UrlsService {
   public formHeadersBeforeLogin() {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'multipart/form-data');
+    return headers;
+  }
+
+  public formHeadersAfterLogin() {
+    let headers = new HttpHeaders({
+      'Authorization': 'token ' + JSON.parse(localStorage.getItem("LoggedInUser")!).token
+    });
+    return headers;
+  }
+
+  public updateprofile() {
+    return this.url + 'auth/updateprofile/';
   }
 }

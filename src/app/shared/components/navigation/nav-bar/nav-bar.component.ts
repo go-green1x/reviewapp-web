@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { Routes_URL } from 'src/app/shared/constants/routes';
-
+import { UrlsService } from 'src/app/shared/services/urls.service';
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
@@ -11,7 +11,8 @@ import { Routes_URL } from 'src/app/shared/constants/routes';
 export class NavBarComponent {
   public routes_url = Routes_URL;
   isMenuCollapsed = true;
-  constructor(public auth:AuthService, private route: Router) { }
+  
+  constructor(public auth:AuthService, private route: Router, public urls: UrlsService) { }
 
   ngOnInit(): void {
   }

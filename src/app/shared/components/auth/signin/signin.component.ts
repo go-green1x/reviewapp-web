@@ -44,9 +44,6 @@ export class SigninComponent {
               this.auth.user = this.auth.setUserDetails();
               this.route.navigateByUrl('/');
             }
-            else {
-              this.ts.showToast('Invalid username or password', 1000, undefined);
-            }
           }
         });
 

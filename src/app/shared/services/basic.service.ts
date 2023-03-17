@@ -30,4 +30,14 @@ export class BasicService {
       })
     );
   }
+
+  put(url: string, body: any, header: any, errorPath: any, duration: number, message: string = '') {
+    return this.http.put(url, body, { headers: header, observe: "response" }).pipe(
+      catchError(error => {
+        this.ta.showToast(message, duration, error, errorPath);
+        return of(error);
+      })
+    );
+  }
+
 }

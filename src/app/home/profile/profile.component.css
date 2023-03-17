@@ -1,14 +1,9 @@
-.signup-container {
+.profile-container {
     min-height: 100vh;
 }
 
-.signup {
+.profile-update {
     height: 100%;
-}
-
-.signup-left {
-    font-size: 100px;
-    color: #6d4aff;
 }
 
 .file-input {
@@ -59,4 +54,42 @@ label {
 .signin-text {
     cursor: pointer;
     color: #6d4aff;
+}
+
+.profile-pic {
+    border-radius: 50%;
+    height: 250px;
+    width: 250px;
+}
+
+.image-upload>input {
+    display: none;
+}
+
+.image-upload {
+    position: relative;
+}
+
+.image-upload label {
+    cursor: pointer;
+    position: relative;
+}
+
+.image-upload span {
+    position: absolute;
+    top: 50%;
+    left: 28%;
+}
+
+.image-upload .hover-text {
+    display: none;
+  }
+  
+.image-upload:hover .hover-text {
+    display: block;
+}
+  
+.btn:hover {
+    background-color: #6d4affa8;
+    color: #fff;
 }

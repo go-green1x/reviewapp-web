@@ -1,21 +1,3 @@
-mat-menu {
-    background-color: #212121;
-  }
-  .spacer {
-    flex: 1 1 auto;
-  }
-  .main {
-    min-height: 100vh;
-  }
-  .title {
-    margin: auto;
-  } */
-  
-  ::ng-deep .dropdown-menu {
-    right: 0;
-    left: unset!important;
-  }
-  
   .profile img {
     height: 50px;
   }
@@ -42,4 +24,9 @@ mat-menu {
     border-right: 0.3em solid transparent;
     border-bottom: 0;
     border-left: 0.3em solid transparent;
+  }
+
+
+  .profile-pic{
+    border-radius: 30%;
   }
