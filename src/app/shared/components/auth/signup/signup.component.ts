@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ToastService } from 'src/app/shared/services/toast.service';
 import { ValidationMessages } from 'src/app/shared/constants/constants';
+import { Routes_URL } from 'src/app/shared/constants/routes';
 
 export function ConfirmedValidator(controlName: string, matchingControlName: string){
   return (formGroup: FormGroup) => {
@@ -35,6 +36,7 @@ export class SignupComponent {
     }
   }
 
+  public routes_url = Routes_URL;
   public ValidationMessagesRef = ValidationMessages;
   signupform!: FormGroup;
   ngOnInit(): void {
@@ -81,6 +83,8 @@ export class SignupComponent {
 
         let first_name = fullName.split(' ')[0];
         let last_name = fullName.substring(first_name.length);
+        let uploadImage = this.signupform?.get('profilePic')?.value;
+        let uploadImageNameArr = uploadImage.name.split('.');
 
         const formData = new FormData();
         formData.append('username', username);
@@ -92,7 +96,7 @@ export class SignupComponent {
         formData.append('profile.address', address);
         formData.append('profile.city', city);
         formData.append('profile.country', country);
-        formData.append('profile.upload', this.signupform?.get('profilePic')?.value);
+        formData.append('profile.upload', uploadImage, username + '.' + uploadImageNameArr[uploadImageNameArr.length-1]);
 
         this.auth.signup(formData).subscribe((result: any) => {
           if (result.status == 200 || result.status==201) {

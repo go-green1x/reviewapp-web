@@ -38,7 +38,7 @@ form {
   height: 100%;
 }
 
-.row {
+.add-spacing {
   padding: 2%;
   overflow:auto; 
 }
@@ -49,4 +49,14 @@ label {
 
 .error-message {
     color:red;
+}
+
+.submit-btn {
+    display: block;
+    margin: auto;
+}
+
+.signin-text {
+    cursor: pointer;
+    color: #6d4aff;
 }

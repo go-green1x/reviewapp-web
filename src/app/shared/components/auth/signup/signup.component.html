@@ -5,7 +5,7 @@
     </div>
     <div class="col-md-8">
       <form [formGroup]="signupform" (ngSubmit)="onSubmit(form)" #form>
-        <div class="row">
+        <div class="row add-spacing">
           <div class="col">
             <label for="username">Username:</label>
             <input type="text" class="form-control" placeholder="Username" formControlName="username">
@@ -29,7 +29,7 @@
             </div>            
           </div>
         </div>
-        <div class="row">
+        <div class="row add-spacing">
           <div class="col">
             <label for="country">Country:</label>
             <input type="text" class="form-control" placeholder="Country" formControlName="country" maxlength="50">
@@ -53,7 +53,7 @@
             </div>            
           </div>
         </div>
-        <div class="row">
+        <div class="row add-spacing">
           <div class="col">
             <label for="date_of_birth">Date of Birth:</label>
             <input type="date" class="form-control" placeholder="Date of Birth" formControlName="dateOfBirth">
@@ -77,7 +77,7 @@
             </div>            
           </div>
         </div>
-        <div class="row">
+        <div class="row add-spacing">
           <div class="col">
             <label for="password">Password:</label>
             <input type="password" class="form-control" placeholder="Password" formControlName="password">
@@ -101,7 +101,7 @@
             </div>            
           </div>
         </div>
-        <div class="row">
+        <div class="row add-spacing">
           <div class="col">
             <label for="address">Address:</label>
             <input type="textarea" class="form-control" placeholder="Address" formControlName="address" maxlength="100">
@@ -114,15 +114,23 @@
             </div>            
           </div>
         </div>
-        <div class="row">
+        <div class="row add-spacing">
           <div class="col">
             <input type="file" (change)="onFileChange($event)" class="file-input" accept="image/png, image/jpeg" formControlName="file">
           </div>
           <div class="col">
           </div>
         </div>
-        <div class="form-group d-flex justify-content-center flex-column align-items-center">
-          <button type="submit" [disabled]="signupform.invalid" class="btn">Sign up</button>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-4 offset-md-4">
+              <button type="submit" [disabled]="signupform.invalid" class="btn submit-btn">Sign up</button>
+            </div>
+            <div class="col-md-4">
+              <p class="text-center signin-text" [routerLink]="['/'+routes_url.AUTH + '/' + routes_url.SIGN_IN]">
+                Back to Signin</p>
+            </div>
+          </div>
         </div>
       </form>
     </div>
