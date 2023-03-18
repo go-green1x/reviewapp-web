@@ -1,10 +1,10 @@
 .section-1 {
-    background-color: #6d4aff8f;
+    background-color: #9c85ff7a;
     padding: 2rem;
   }
   
   .section-2 {
-    background-color: #6d4affd6;
+    background-color: #866ee99c;
     padding: 2rem;
   }
   
@@ -66,4 +66,8 @@
 
   .section-2 p {
     color: #fff;
+  }
+
+  .btn {
+    background-color: #6d4affad;
   }
