@@ -6,22 +6,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import { ToastService } from 'src/app/shared/services/toast.service';
 import { ValidationMessages } from 'src/app/shared/constants/constants';
 import { Routes_URL } from 'src/app/shared/constants/routes';
-
-export function ConfirmedValidator(controlName: string, matchingControlName: string){
-  return (formGroup: FormGroup) => {
-    const control = formGroup.controls[controlName];
-    const matchingControl = formGroup.controls[matchingControlName];
-
-    if (matchingControl.errors && !matchingControl.errors?.['confirmedValidator']) {
-      return;
-    }
-    if (control.value !== matchingControl.value) {
-      matchingControl.setErrors({ confirmedValidator: true });
-    } else {
-      matchingControl.setErrors(null);
-    }
-  };
-}
+import { ConfirmedValidator } from 'src/app/shared/validators/confirm.validator';
 
 @Component({
   selector: 'app-signup',
@@ -64,12 +49,10 @@ export class SignupComponent {
       this.signupform.patchValue({
         profilePic: file
       });
-      console.log(this.signupform.value['profilePic']);
     }
   }
 
   onSubmit(form: any) {
-    console.log(this.signupform);
     if (this.signupform) {
       if (this.signupform.valid) {
         let username = this.signupform.value['username'];

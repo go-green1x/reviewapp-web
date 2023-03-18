@@ -9,13 +9,15 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastComponent } from './components/toast/toast.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
+import { ResetPasswordComponent } from './components/auth/reset-password/reset-password.component';
 
 let customModules = [
   SigninComponent,
   BlankComponent,
   NavBarComponent,
   ToastComponent,
-  SignupComponent
+  SignupComponent,
+  ResetPasswordComponent,
 ];
 
 @NgModule({

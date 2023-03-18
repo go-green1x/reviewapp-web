@@ -1,10 +1,10 @@
 .section-1 {
-    background-color: #6d4aff5e;
+    background-color: #6d4aff8f;
     padding: 2rem;
   }
   
   .section-2 {
-    background-color: #6d4aff85;
+    background-color: #6d4affd6;
     padding: 2rem;
   }
   
@@ -62,4 +62,8 @@
   
   .socialWrapper {
     margin: auto;
+  }
+
+  .section-2 p {
+    color: #fff;
   }

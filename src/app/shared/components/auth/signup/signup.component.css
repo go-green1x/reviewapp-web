@@ -1,9 +1,16 @@
 .signup-container {
     min-height: 100vh;
+    overflow: hidden;
+    position: relative;
 }
 
 .signup {
     height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 .signup-left {

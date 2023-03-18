@@ -118,4 +118,9 @@ export class AuthService {
     const body = formData 
     return this.bconn.put(this.urls.updateprofile(), body,this.urls.header(), '', 1000, EMessages.SOMETHING_WENT_WRONG);
   }
+
+  updatePassword(formData: any) {
+    const body = formData 
+    return this.bconn.put(this.urls.updatePassword(), body,this.urls.header(), 'error.error.old_password', 1000, '');
+  }
 }

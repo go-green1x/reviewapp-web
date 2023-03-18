@@ -54,4 +54,8 @@ export class UrlsService {
   public updateprofile() {
     return this.url + 'auth/updateprofile/';
   }
+
+  public updatePassword() {
+    return this.url + 'auth/updatepassword/';
+  }
 }

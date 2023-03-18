@@ -11,6 +11,9 @@ export const ValidationMessages = {
         { type: 'required', message: 'Email is required.' },
         { type: 'email', message: 'Please enter a valid email.' }
     ],
+    oldPassword: [
+        { type: 'required', message: 'Old Password is required.' }
+    ],
     password: [
         { type: 'required', message: 'Password is required.' },
         { type: 'minlength', message: 'Password must be at least 6 characters long.' },

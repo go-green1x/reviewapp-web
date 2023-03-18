@@ -7,5 +7,6 @@ export enum Routes_URL {
     GALLERY = 'view',
     SIGN_IN = 'signin',
     SIGN_UP = 'signup',
-    PROFILE = 'profile'
+    PROFILE = 'profile',
+    RESET_PASSWORD = 'resetpassword'
   }
