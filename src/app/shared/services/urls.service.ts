@@ -58,4 +58,8 @@ export class UrlsService {
   public updatePassword() {
     return this.url + 'auth/updatepassword/';
   }
+
+  public productsList() {
+    return this.url + 'productAndReviews/product/';
+  }
 }

@@ -8,5 +8,6 @@ export enum Routes_URL {
     SIGN_IN = 'signin',
     SIGN_UP = 'signup',
     PROFILE = 'profile',
-    RESET_PASSWORD = 'resetpassword'
+    RESET_PASSWORD = 'resetpassword',
+    PRODUCTS = 'products'
   }

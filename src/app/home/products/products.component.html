@@ -1,0 +1,61 @@
+<div class="container-fluid product-list">
+    <div class="container pb-5">
+        <ng-container *ngFor="let dir of productList; let i=index">
+            <ng-container *ngIf="i % 3 == 0">
+                <div class="row pt-5">
+                    <div class="col-md-4" *ngFor="let x of [0,1,2]">
+                        <div *ngIf="productList[i+x]" class="card m-auto" style="width:80%">
+                            <div class="text-center">
+                                <b>{{productList[i+x]?.manufacturer}}</b>
+                            </div>
+                            <img class="card-img-top product-img" height="250px" src="{{productList[i+x]?.upload}}" alt="Card image cap">
+                            <div class="card-body">
+                                <div class="d-flex flex-row justify-content-between">
+                                    <h5 class="card-title">{{productList[i+x]?.name}}</h5>
+                                    <span>${{productList[i+x]?.average_cost}}</span>
+                                </div>
+                                <p class="card-text">
+                                    <b>Release Date: </b>{{productList[i+x]?.release_date}}
+                                    <br>
+                                    {{productList[i+x]?.description}}
+                                </p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li *ngFor="let review of productList[i+x].reviews;"  class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <img src="{{url.url + review.author.img}}" class="img img-fluid" width="40px">
+                                            <span>{{review.author.name}}</span>
+                                        </div>
+                                        <div class="col-9">
+                                            <ngb-rating [max]="5" [readonly]="true" [rate]="review.rating"></ngb-rating>
+                                            <p>{{review.review}}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <!-- <div class="card-body">
+                                <a href="#" class="card-link">Card link</a>
+                                <a href="#" class="card-link">Another link</a>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </ng-container>
+    </div>
+</div>
+
+<footer class="bg-inverse section-4">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-9 socialWrapper">
+                <i class="fa fa-facebook-square fa-3x" aria-hidden="true"></i>
+                <i class="fa fa-google-plus-square fa-3x" aria-hidden="true"></i>
+                <i class="fa fa-instagram fa-3x" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+</footer>

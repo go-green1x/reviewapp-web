@@ -11,4 +11,7 @@ export class PpService {
 
   constructor(public urls: UrlsService, private bconn: BasicService) { }
 
+  getProductsList() { 
+    return this.bconn.get(this.urls.productsList(), this.urls.header(), '', 1000, EMessages.SOMETHING_WENT_WRONG);
+  }
 }
