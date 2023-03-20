@@ -11,8 +11,9 @@ import { UrlsService } from 'src/app/shared/services/urls.service';
 
 export class ProductsComponent {
   productList: any;
+  productsByCategory: { [category: string]: any[] } = {};
   constructor(private pp: PpService, public url: UrlsService) { }
-  currentRate=7;
+  currentRate = 7;
   ngOnInit() {
     this.getProductList();
   }
@@ -20,7 +21,16 @@ export class ProductsComponent {
   getProductList() {
     this.pp.getProductsList().subscribe((results: any) => {
       this.productList = results.body;
-      console.log(results);
+      this.separateByCategory(this.productList);
     });
+  }
+
+  separateByCategory(products: any) {
+    for (const product of products) {
+      if (!this.productsByCategory[product.category]) {
+        this.productsByCategory[product.category] = [];
+      }
+      this.productsByCategory[product.category].push(product);
+    }
   }
 }

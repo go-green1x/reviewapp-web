@@ -46,3 +46,19 @@
 .list-group-item img{
     border-radius: 50%;
 }
+
+.category {
+    /* background-color: antiquewhite; */
+    padding: 1%;
+    background-color: #5846a480;
+}
+
+.no-gutters {
+    border-bottom: #000 2px solid;
+}
+
+.no-gutters:hover {
+    box-shadow: 0px 2px 18px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 2px 18px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 2px 18px 0px rgba(0,0,0,0.75);
+}
