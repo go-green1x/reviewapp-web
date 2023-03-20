@@ -8,13 +8,15 @@ import { ProfileComponent } from './profile/profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ProductsComponent } from './products/products.component';
+import { ProductReviewsComponent } from './product-reviews/product-reviews.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     ProfileComponent,
     AboutUsComponent,
-    ProductsComponent
+    ProductsComponent,
+    ProductReviewsComponent
   ],
   imports: [
     CommonModule,

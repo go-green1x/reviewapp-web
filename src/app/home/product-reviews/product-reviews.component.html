@@ -1,0 +1,69 @@
+<div class="product">
+    <div class="row pt-5 pb-5 no-gutters">
+        <div class="col-md-2 offset-md-1">
+            <div class="d-flex flex-column">
+                <h4>Product Rating:</h4>
+                <ngb-rating [max]="5" class="star" [readonly]="true" [rate]="productDetails?.avg_rating"></ngb-rating>
+                <br>
+                <span><b>Model: </b> {{productDetails?.name}}</span>
+                <span><b>Manufacturer: </b>{{productDetails?.manufacturer}}</span>
+                <span><b>Price: </b> ${{productDetails?.average_cost}}</span>
+                <span><b>Release Date: </b>{{productDetails?.release_date}}</span>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-4">
+                    <img class="card-img-top product-img" src="{{productDetails?.upload}}">
+                </div>
+                <div class="col-md-8 d-flex flex-column justify-content-around">
+                    <h3>Description: </h3>
+                    <p class="card-text">
+                        {{productDetails?.description}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="reviews pt-5 pb-5">
+        <div *ngFor="let review of productDetails?.reviews;" class="row">
+            <div class="col-md-2 d-flex flex-column align-items-center justify-content-center">
+                <img src="{{url.url + review.author.img}}" class="img img-fluid review-img" width="100px">
+                <span>{{review.author.name}}</span>
+            </div>
+            <div class="col-md-8">
+                <ngb-rating [max]="5" class="star" [readonly]="true" [rate]="review.rating"></ngb-rating>
+                <p>{{review?.review}}</p>
+            </div>
+            <div class="col-md-2">
+                <div class="d-flex justify-content-center align-items-center justify-content-evenly review-icons">
+                    <i class="fa fa-edit fa-2x"></i>
+                    <i class="fa fa-trash fa-2x" aria-hidden="true" (click)="deleteReview(review.id)"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row post-review">
+        <form [formGroup]="reviewForm" (ngSubmit)="onSubmit(form)" #form>
+            <div class="row pt-5 pb-4">
+                <div class="offset-md-1 col-md-2">
+                    <div class="review-rating">
+                        <ngb-rating class="star" [max]="5" [(rate)]="reviewRating" formControlName="rating"></ngb-rating>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <textarea rows="4" cols="50" class="form-control" formControlName="review" maxlength="200">
+                    </textarea>
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn">Post Review</button>
+                </div>
+            </div>
+            <!-- <div class="row">
+                <div class="offset-md-7 col-md-2">
+                    <button type="submit" class="btn">Post Review</button>
+                </div>
+            </div> -->
+        </form>
+    </div>
+</div>

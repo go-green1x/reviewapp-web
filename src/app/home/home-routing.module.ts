@@ -7,11 +7,13 @@ import { Routes_URL } from 'src/app/shared/constants/routes';
 import { ProfileComponent } from 'src/app/home/profile/profile.component';
 import { AboutUsComponent } from 'src/app/home/about-us/about-us.component';
 import { ProductsComponent } from 'src/app/home/products/products.component';
+import { ProductReviewsComponent } from 'src/app/home/product-reviews/product-reviews.component';
 
 const routes: Routes = [
   { path: '' , component: HomeComponent},
   { path: Routes_URL.PROFILE , component: ProfileComponent},
   { path: Routes_URL.PRODUCTS , component: ProductsComponent},
+  { path: Routes_URL.PRODUCTS + `/:id` , component: ProductReviewsComponent},
   { path: Routes_URL.CONTACT_US , component: AboutUsComponent},
   { path: '**' , component: HomeComponent }
 ];

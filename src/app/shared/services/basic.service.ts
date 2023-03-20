@@ -19,7 +19,6 @@ export class BasicService {
         return of(error);
       })
     );
-
   }
 
   post(url: string, body: any, header: any, errorPath: any, duration: number, message: string = '') {
@@ -40,4 +39,11 @@ export class BasicService {
     );
   }
 
+  delete(url: string, header: any, errorPath: any, duration: number, message: string = '', responseTypeParam: any = "json") {
+    return this.http.delete(url, { headers: header, observe: "response", responseType: responseTypeParam }).pipe(
+      catchError(error => {
+        return of(error);
+      })
+    );
+  }
 }

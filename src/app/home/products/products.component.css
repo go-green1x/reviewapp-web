@@ -2,11 +2,6 @@
     background-color: #9c85ff7a;
 }
 
-.product-img {
-    /* width: 350px; */
-    /* height: 350px; */
-}
-
 .card {
     background-color: #9c85ff7a;
 }
@@ -51,10 +46,14 @@
     /* background-color: antiquewhite; */
     padding: 1%;
     background-color: #5846a480;
+    box-shadow: 0px 2px 18px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 2px 18px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 2px 18px 0px rgba(0,0,0,0.75);
 }
 
 .no-gutters {
     border-bottom: #000 2px solid;
+    cursor: pointer;
 }
 
 .no-gutters:hover {

@@ -62,4 +62,8 @@ export class UrlsService {
   public productsList() {
     return this.url + 'productAndReviews/product/';
   }
+
+  public review() {
+    return this.url + 'productAndReviews/review/';
+  }
 }

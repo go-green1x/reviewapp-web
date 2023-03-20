@@ -11,7 +11,19 @@ export class PpService {
 
   constructor(public urls: UrlsService, private bconn: BasicService) { }
 
-  getProductsList() { 
+  getProductsList() {
     return this.bconn.get(this.urls.productsList(), this.urls.header(), '', 1000, EMessages.SOMETHING_WENT_WRONG);
+  }
+
+  getProductsReviews(productId: number) {
+    return this.bconn.get(this.urls.productsList() + productId + '/', this.urls.header(), '', 1000, EMessages.SOMETHING_WENT_WRONG);
+  }
+
+  saveReview(body: any) {
+    return this.bconn.post(this.urls.review(), body, this.urls.header(), '', 1000, EMessages.SOMETHING_WENT_WRONG);
+  }
+
+  deleteReview(id: number) {
+    return this.bconn.delete(this.urls.review() + id + '/', this.urls.header(), '', 1000, EMessages.SOMETHING_WENT_WRONG);
   }
 }

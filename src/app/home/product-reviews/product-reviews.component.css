@@ -1,0 +1,38 @@
+.product {
+    background-color: #9c85ff7a;
+}
+
+.post-review {
+    background-color: #9c85ff7a;
+}
+
+.review-rating {
+    float:right;
+}
+
+.reviews {
+    background-color: #fff;
+    width: 100vw;
+    padding-left: 10vw;
+    padding-right: 10vw;
+}
+
+.reviews > .row {
+    border: #fff 20px solid;
+    background-color: #9c85ff7a;
+    /* margin-left: 20px;
+    margin-right: 20px; */
+}
+
+.review-img{
+    border-radius: 50%;
+}
+
+::ng-deep .star {
+    font-size: 2rem;
+}
+
+.review-icons {
+    height:100%;
+    cursor: pointer;
+}
