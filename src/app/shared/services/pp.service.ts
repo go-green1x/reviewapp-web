@@ -23,6 +23,10 @@ export class PpService {
     return this.bconn.post(this.urls.review(), body, this.urls.header(), '', 1000, EMessages.SOMETHING_WENT_WRONG);
   }
 
+  updateReview(id: number, body: any) {
+    return this.bconn.put(this.urls.review() + id + '/', body, this.urls.header(), '', 1000, EMessages.SOMETHING_WENT_WRONG);
+  }
+
   deleteReview(id: number) {
     return this.bconn.delete(this.urls.review() + id + '/', this.urls.header(), '', 1000, EMessages.SOMETHING_WENT_WRONG);
   }

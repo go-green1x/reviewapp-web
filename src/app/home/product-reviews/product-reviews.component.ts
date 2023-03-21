@@ -18,7 +18,10 @@ export class ProductReviewsComponent {
   productId!: number;
   productDetails: any;
   reviewForm!: FormGroup;
+  updateReviewForm!: FormGroup;
   reviewRating!: number;
+  updateReviewRating!: number;
+  editReviewId!: number;
   ngOnInit() {
     this._activatedRoute.params.subscribe(params => {
       this.productId = params['id'];
@@ -26,6 +29,10 @@ export class ProductReviewsComponent {
     });
 
     this.reviewForm = this.fb.group({
+      rating: ['', [Validators.required]],
+      review: ['', [Validators.required, Validators.maxLength(200)]]
+    });
+    this.updateReviewForm = this.fb.group({
       rating: ['', [Validators.required]],
       review: ['', [Validators.required, Validators.maxLength(200)]]
     });
@@ -52,7 +59,10 @@ export class ProductReviewsComponent {
 
         this.pp.saveReview(payload).subscribe((result: any) => {
           if (result.ok == true) {
-            form.reset();
+            this.reviewForm.patchValue({
+              review: '',
+              rating: 0 
+            });
             this.productDetails.reviews.push(result.body);
             this.ts.showToast('Review Posted', 1000, undefined);
           }
@@ -68,5 +78,39 @@ export class ProductReviewsComponent {
         this.ts.showToast('Review Deleted', 1000, undefined);
       }
     });
+  }
+
+  editReview(review: any) {
+    this.editReviewId = review?.id;
+    this.updateReviewForm.patchValue({
+      review: review?.review,
+      rating: review?.rating 
+    });
+    this.updateReviewRating = review?.rating;
+    console.log(this.updateReviewForm.value['review'].length)
+  }
+
+  updateReview(reviewObj:any) {
+    if (this.updateReviewForm) {
+      if (this.updateReviewForm.valid) {
+        let rating = this.updateReviewForm.value['rating'];
+        let review = this.updateReviewForm.value['review'];
+
+        let payload = {
+          "rating": rating,
+          "review": review,
+          "product": this.productId
+        };
+
+        this.pp.updateReview(reviewObj.id, payload).subscribe((result: any) => {
+          if (result.ok == true) {
+            let objIndex = this.productDetails.reviews.findIndex((obj:any) => { return obj.id == reviewObj.id});
+            this.productDetails.reviews[objIndex] = result.body;
+            this.ts.showToast('Review Updated', 1000, undefined);
+            this.editReviewId = -1;
+          }
+        });
+      }
+    }
   }
 }
