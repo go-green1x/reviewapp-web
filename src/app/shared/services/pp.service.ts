@@ -30,4 +30,8 @@ export class PpService {
   deleteReview(id: number) {
     return this.bconn.delete(this.urls.review() + id + '/', this.urls.header(), '', 1000, EMessages.SOMETHING_WENT_WRONG);
   }
+
+  contactInquiry(body: any) {
+    return this.bconn.post(this.urls.contactMail(), body, this.urls.header(), '', 1000, EMessages.SOMETHING_WENT_WRONG);
+  }
 }

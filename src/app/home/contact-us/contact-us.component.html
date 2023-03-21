@@ -1,0 +1,144 @@
+<div class="container-fluid">
+    <div class="pt-5 pb-5">
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit(form)" #form>
+            <div class="row add-spacing form-group">
+                <div class="offset-md-3 col-md-3">
+                    <input type="fullName" class="form-control" placeholder="Full Name" formControlName="fullName">
+                    <div class="validation-errors">
+                        <ng-container *ngFor="let validation of ValidationMessagesRef.fullName">
+                            <div class="error-message"
+                                *ngIf="this.contactForm.controls?.['fullName']?.hasError(validation.type) && (this.contactForm.controls?.['fullName']?.touched)">
+                                {{ validation.message }}
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <input type="email" class="form-control" placeholder="Email" formControlName="email">
+                    <div class="validation-errors">
+                        <ng-container *ngFor="let validation of ValidationMessagesRef.email">
+                            <div class="error-message"
+                                *ngIf="this.contactForm.controls?.['email']?.hasError(validation.type) && (this.contactForm.controls?.['email']?.touched)">
+                                {{ validation.message }}
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+            <div class="row add-spacing form-group">
+                <div class="offset-md-1 col-md-2">
+                    <label for="subject">Subject:</label>
+                </div>
+                <div class="col-md-6">
+                    <input type="subject" class="form-control" placeholder="Subject" formControlName="subject">
+                </div>
+            </div>
+            <div class="row add-spacing form-group">
+                <div class="offset-md-1 col-md-2">
+                    <label for="subject">Message:</label>
+                </div>
+                <div class="col-md-6">
+                    <textarea rows="4" cols="50" type="message" class="form-control" placeholder="Message"
+                        formControlName="message" maxlength="500"></textarea>
+                </div>
+            </div>
+            <div class="form-group d-flex justify-content-center flex-column align-items-center">
+                <button type="submit" [disabled]="contactForm.invalid" class="btn">Send Mail</button>
+            </div>
+        </form>
+    </div>
+    <div class="row p-5 bottom-text">
+        <div class="col-md-12">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                et
+                dolore
+                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                ea
+                commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla
+                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+                anim id
+                est laborum.
+            </p>
+        </div>
+    </div>
+
+</div>
+
+
+
+<!-- <div class="container">
+    <div class="">
+        <div></div>
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit(form)" #form>
+            <div class="row add-spacing form-group">
+                <div class="col-md-4">
+                    <label for="username">Username:</label>
+                </div>
+                <div class="col-md-6">
+                    <input type="username" class="form-control" placeholder="Username" formControlName="username">
+                    <div class="validation-errors">
+                        <ng-container *ngFor="let validation of ValidationMessagesRef.username">
+                            <div class="error-message"
+                                *ngIf="this.contactForm.controls?.['username']?.hasError(validation.type) && (this.contactForm.controls?.['username']?.touched)">
+                                {{ validation.message }}
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+            <div class="row add-spacing form-group">
+                <div class="col-md-4">
+                    <label for="email">Email:</label>
+                </div>
+                <div class="col-md-6">
+                    <input type="email" class="form-control" placeholder="Email" formControlName="email">
+                    <div class="validation-errors">
+                        <ng-container *ngFor="let validation of ValidationMessagesRef.email">
+                            <div class="error-message"
+                                *ngIf="this.contactForm.controls?.['email']?.hasError(validation.type) && (this.contactForm.controls?.['email']?.touched)">
+                                {{ validation.message }}
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+            <div class="row add-spacing form-group">
+                <div class="col-md-4">
+                    <label for="subject">Subject:</label>
+                </div>
+                <div class="col-md-6">
+                    <input type="subject" class="form-control" placeholder="Subject" formControlName="subject">
+                </div>
+            </div>
+            <div class="row add-spacing form-group">
+                <div class="col-md-4">
+                    <label for="subject">Message:</label>
+                </div>
+                <div class="col-md-6">
+                    <textarea rows="4" cols="50" type="message" class="form-control" placeholder="Message"
+                        formControlName="message" maxlength="500"></textarea>
+                </div>
+            </div>
+            <div class="form-group d-flex justify-content-center flex-column align-items-center">
+                <button type="submit" [disabled]="contactForm.invalid" class="btn">Update</button>
+            </div>
+        </form>
+    </div>
+</div> -->
+
+<footer class="bg-inverse section-4">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-9 socialWrapper">
+                <i class="fa fa-facebook-square fa-3x" aria-hidden="true"></i>
+                <i class="fa fa-google-plus-square fa-3x" aria-hidden="true"></i>
+                <i class="fa fa-instagram fa-3x" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+</footer>

@@ -36,7 +36,7 @@ export class SigninComponent {
       if (this.loginform.valid) {
 
         this.auth.login(username, password).subscribe((result: any) => {
-          if (result.status == 200) {
+          if (result.ok == true) {
             if (result.body.hasOwnProperty('token')) {
               form.reset();
               localStorage.setItem("LoggedInUser", JSON.stringify(result.body));

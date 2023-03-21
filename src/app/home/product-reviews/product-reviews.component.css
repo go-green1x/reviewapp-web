@@ -12,7 +12,6 @@
 
 .reviews {
     background-color: #fff;
-    width: 100vw;
     padding-left: 10vw;
     padding-right: 10vw;
 }
@@ -20,8 +19,6 @@
 .reviews > .row {
     border: #fff 20px solid;
     background-color: #9c85ff7a;
-    /* margin-left: 20px;
-    margin-right: 20px; */
 }
 
 .review-img{
@@ -35,4 +32,8 @@
 .review-icons {
     height:100%;
     cursor: pointer;
+}
+
+.review-text {
+    word-wrap: break-word;
 }

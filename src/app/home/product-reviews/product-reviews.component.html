@@ -1,4 +1,4 @@
-<div class="product">
+<div class="container-fluid product">
     <div class="row pt-5 pb-5 no-gutters">
         <div class="col-md-2 offset-md-1">
             <div class="d-flex flex-column">
@@ -34,7 +34,7 @@
                 </div>
                 <div class="col-md-8">
                     <ngb-rating [max]="5" class="star" *ngIf="review.id != editReviewId" [readonly]="true" [(rate)]="review.rating"></ngb-rating>
-                    <p *ngIf="review.id != editReviewId">{{review?.review}}</p>
+                    <p *ngIf="review.id != editReviewId" class="review-text">{{review?.review}}</p>
                     <ngb-rating [max]="5" class="star" *ngIf="review.id == editReviewId" [(rate)]="updateReviewRating"
                         formControlName="rating"></ngb-rating>
                     <textarea style="width:100%" *ngIf="review.id == editReviewId" rows="4" formControlName="review"
@@ -43,8 +43,8 @@
                 </div>
                 <div class="col-md-2">
                     <div class="d-flex justify-content-center align-items-center justify-content-evenly review-icons">
-                        <i *ngIf="review.id != editReviewId" class="fa fa-edit fa-2x" (click)="editReview(review)"></i>
-                        <i *ngIf="review.id != editReviewId" class="fa fa-trash fa-2x" aria-hidden="true"
+                        <i *ngIf="review.id != editReviewId && review.author.name == auth.user.username" class="fa fa-edit fa-2x" (click)="editReview(review)"></i>
+                        <i *ngIf="review.id != editReviewId && review.author.name == auth.user.username" class="fa fa-trash fa-2x" aria-hidden="true"
                             (click)="deleteReview(review.id)"></i>
                         <button type="submit" *ngIf="review.id == editReviewId" class="btn">Post Review</button>
                         <i *ngIf="review.id == editReviewId" class="fa fa-close fa-2x" aria-hidden="true" (click)="editReviewId=-1"></i>

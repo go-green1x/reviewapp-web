@@ -19,7 +19,7 @@ export class NavBarComponent {
 
   logout() {
     this.auth.logout().subscribe((data) => {
-      if (data.status == 200 || 204) {
+      if (data.ok == true) {
         this.auth.removetoken();
         this.route.navigateByUrl('/'+this.routes_url.AUTH+'/'+this.routes_url.SIGN_IN);
       }

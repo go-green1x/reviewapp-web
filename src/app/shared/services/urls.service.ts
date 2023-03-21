@@ -66,4 +66,8 @@ export class UrlsService {
   public review() {
     return this.url + 'productAndReviews/review/';
   }
+
+  public contactMail() {
+    return this.url + 'productAndReviews/contactMail/';
+  }
 }

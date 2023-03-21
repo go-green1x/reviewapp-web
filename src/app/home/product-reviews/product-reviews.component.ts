@@ -5,6 +5,7 @@ import { UrlsService } from 'src/app/shared/services/urls.service';
 import { ActivatedRoute } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastService } from 'src/app/shared/services/toast.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-product-reviews',
@@ -14,7 +15,7 @@ import { ToastService } from 'src/app/shared/services/toast.service';
 export class ProductReviewsComponent {
   constructor(private pp: PpService, public url: UrlsService,
     private _activatedRoute: ActivatedRoute, private fb: FormBuilder,
-    private ts: ToastService) { }
+    private ts: ToastService, public auth: AuthService) { }
   productId!: number;
   productDetails: any;
   reviewForm!: FormGroup;
@@ -40,7 +41,6 @@ export class ProductReviewsComponent {
 
   getProductDetails() {
     this.pp.getProductsReviews(this.productId).subscribe((results: any) => {
-      console.log(results.body);
       this.productDetails = results.body;
     });
   }
@@ -61,7 +61,7 @@ export class ProductReviewsComponent {
           if (result.ok == true) {
             this.reviewForm.patchValue({
               review: '',
-              rating: 0 
+              rating: 0
             });
             this.productDetails.reviews.push(result.body);
             this.ts.showToast('Review Posted', 1000, undefined);
@@ -72,9 +72,9 @@ export class ProductReviewsComponent {
   }
 
   deleteReview(id: number) {
-    this.pp.deleteReview(id).subscribe((result: any) => {console.log(result);
+    this.pp.deleteReview(id).subscribe((result: any) => {
       if (result.ok == true) {
-        this.productDetails.reviews = this.productDetails.reviews.filter((x:any) => { return x?.id != id});
+        this.productDetails.reviews = this.productDetails.reviews.filter((x: any) => { return x?.id != id });
         this.ts.showToast('Review Deleted', 1000, undefined);
       }
     });
@@ -84,13 +84,12 @@ export class ProductReviewsComponent {
     this.editReviewId = review?.id;
     this.updateReviewForm.patchValue({
       review: review?.review,
-      rating: review?.rating 
+      rating: review?.rating
     });
     this.updateReviewRating = review?.rating;
-    console.log(this.updateReviewForm.value['review'].length)
   }
 
-  updateReview(reviewObj:any) {
+  updateReview(reviewObj: any) {
     if (this.updateReviewForm) {
       if (this.updateReviewForm.valid) {
         let rating = this.updateReviewForm.value['rating'];
@@ -104,9 +103,9 @@ export class ProductReviewsComponent {
 
         this.pp.updateReview(reviewObj.id, payload).subscribe((result: any) => {
           if (result.ok == true) {
-            let objIndex = this.productDetails.reviews.findIndex((obj:any) => { return obj.id == reviewObj.id});
-            this.productDetails.reviews[objIndex] = result.body;
             this.ts.showToast('Review Updated', 1000, undefined);
+            let objIndex = this.productDetails.reviews.findIndex((obj: any) => { return obj.id == reviewObj.id });
+            this.productDetails.reviews[objIndex] = result.body;
             this.editReviewId = -1;
           }
         });

@@ -44,7 +44,7 @@ export class AuthService {
   }
 
   getToken() {
-    let token = this.getLoggedInUser().token;
+    let token = this.getLoggedInUser()?.token;
     if (token) {
       return token;
     }
@@ -52,7 +52,7 @@ export class AuthService {
   }
 
   getTokenExpiry() {
-    let expiry = this.getLoggedInUser().expiry;
+    let expiry = this.getLoggedInUser()?.expiry;
     if (expiry) {
       return expiry;
     }
@@ -60,7 +60,7 @@ export class AuthService {
   }
 
   setUserDetails() {
-    let userDetails = this.getLoggedInUser().userDetails;
+    let userDetails = this.getLoggedInUser()?.userDetails;
     if (userDetails) {
       if (userDetails?.profile?.upload) {
         userDetails.profile.upload = this.urls.url + '/' + userDetails?.profile?.upload;

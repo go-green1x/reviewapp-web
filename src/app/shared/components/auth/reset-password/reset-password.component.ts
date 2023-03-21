@@ -45,7 +45,7 @@ export class ResetPasswordComponent {
           "confirm_new_password": confirmPassword
         };
         this.auth.updatePassword(payload).subscribe((result: any) => {
-          if (result.status == 200 || result.status == 201) {
+          if (result.ok == true) {
             form.reset();
             this.ts.showToast('Password Updated Successsfullt', 1000, undefined);
           }

@@ -1,0 +1,36 @@
+.section-4 {
+    background-color: #292b2c !important;
+}
+
+.bottom-text {
+    background-color: #9c85ff7a;
+}
+
+.add-spacing {
+    padding: 2%;
+    overflow:auto; 
+}
+
+.footerImg {
+    padding: 15px;
+}
+
+.fa {
+    margin: 10px;
+}
+
+.fa-facebook-square {
+    color: #3b5998;
+}
+
+.fa-google-plus-square {
+    color: #c32f10;
+}
+
+.fa-instagram {
+    color: #ffffff;
+}
+
+.socialWrapper {
+    margin: auto;
+}

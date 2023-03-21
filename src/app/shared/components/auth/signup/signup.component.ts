@@ -82,7 +82,7 @@ export class SignupComponent {
         formData.append('profile.upload', uploadImage, username + '.' + uploadImageNameArr[uploadImageNameArr.length-1]);
 
         this.auth.signup(formData).subscribe((result: any) => {
-          if (result.status == 200 || result.status==201) {
+          if (result.ok == true) {
               form.reset();
               this.ts.showToast('Account Created Successsfullt', 1000, undefined);
           }
