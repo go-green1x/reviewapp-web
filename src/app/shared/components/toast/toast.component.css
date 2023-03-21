@@ -1,10 +1,16 @@
 :host {
-    margin: 0;
+    /* margin: 0;
     position: absolute;
     top: 90%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
+    position: fixed;
+    z-index: 9999;
+    top: 80%;
+    left: 50%;
     transform: translate(-50%, -50%);
+    text-align: center;
 }
 
 ngb-toast {

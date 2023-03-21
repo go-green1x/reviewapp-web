@@ -23,17 +23,17 @@ export class AuthService {
       "password": password
     }
 
-    return this.bconn.post(this.urls.login(), body, this.urls.headerBeforeAuth(), '', 1000, EMessages.INVALID_USERNAME_PASSWORD);
+    return this.bconn.post(this.urls.login(), body, this.urls.headerBeforeAuth(), '', 3000, EMessages.INVALID_USERNAME_PASSWORD);
   }
 
   signup(formData: any) {
     const body = formData 
-    return this.bconn.post(this.urls.signup(), body,this.urls.formHeadersBeforeLogin(), 'error.error.username[0]', 1000);
+    return this.bconn.post(this.urls.signup(), body,this.urls.formHeadersBeforeLogin(), 'error.error.username[0]', 3000);
   }
 
   logout() {
     const body = {};
-    return this.bconn.post(this.urls.logout(), body, this.urls.header(), '', 1000, EMessages.SOMETHING_WENT_WRONG);
+    return this.bconn.post(this.urls.logout(), body, this.urls.header(), '', 3000, EMessages.SOMETHING_WENT_WRONG);
   }
 
   getLoggedInUser() {
@@ -111,16 +111,16 @@ export class AuthService {
 
   updateProfilePic(data: any) {
     const body = data 
-    return this.bconn.put(this.urls.updateprofile(), body,this.urls.formHeadersAfterLogin(), '', 1000, EMessages.SOMETHING_WENT_WRONG);
+    return this.bconn.put(this.urls.updateprofile(), body,this.urls.formHeadersAfterLogin(), '', 3000, EMessages.SOMETHING_WENT_WRONG);
   }
 
   updateProfile(formData: any) {
     const body = formData 
-    return this.bconn.put(this.urls.updateprofile(), body,this.urls.header(), '', 1000, EMessages.SOMETHING_WENT_WRONG);
+    return this.bconn.put(this.urls.updateprofile(), body,this.urls.header(), '', 3000, EMessages.SOMETHING_WENT_WRONG);
   }
 
   updatePassword(formData: any) {
     const body = formData 
-    return this.bconn.put(this.urls.updatePassword(), body,this.urls.header(), 'error.error.old_password', 1000, '');
+    return this.bconn.put(this.urls.updatePassword(), body,this.urls.header(), 'error.error.old_password', 3000, '');
   }
 }

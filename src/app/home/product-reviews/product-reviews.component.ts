@@ -64,7 +64,7 @@ export class ProductReviewsComponent {
               rating: 0
             });
             this.productDetails.reviews.push(result.body);
-            this.ts.showToast('Review Posted', 1000, undefined);
+            this.ts.showToast('Review Posted', 3000, undefined);
           }
         });
       }
@@ -75,7 +75,7 @@ export class ProductReviewsComponent {
     this.pp.deleteReview(id).subscribe((result: any) => {
       if (result.ok == true) {
         this.productDetails.reviews = this.productDetails.reviews.filter((x: any) => { return x?.id != id });
-        this.ts.showToast('Review Deleted', 1000, undefined);
+        this.ts.showToast('Review Deleted', 3000, undefined);
       }
     });
   }
@@ -103,7 +103,7 @@ export class ProductReviewsComponent {
 
         this.pp.updateReview(reviewObj.id, payload).subscribe((result: any) => {
           if (result.ok == true) {
-            this.ts.showToast('Review Updated', 1000, undefined);
+            this.ts.showToast('Review Updated', 3000, undefined);
             let objIndex = this.productDetails.reviews.findIndex((obj: any) => { return obj.id == reviewObj.id });
             this.productDetails.reviews[objIndex] = result.body;
             this.editReviewId = -1;

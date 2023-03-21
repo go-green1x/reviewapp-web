@@ -51,7 +51,7 @@ export class ProfileComponent {
 
       this.auth.updateProfilePic(formData).subscribe((result: any) => {
         if (result.ok == true) {
-          this.ts.showToast('Picture Updated', 1000, undefined);
+          this.ts.showToast('Picture Updated', 3000, undefined);
 
           let userObj = this.auth.getLoggedInUser();
           if (userObj.userDetails?.profile?.upload) {
@@ -95,7 +95,7 @@ export class ProfileComponent {
         this.auth.updateProfilePic(payload).subscribe((result: any) => {
           if (result.ok == true) {
             this.toggleEdit();
-            this.ts.showToast('Profile Updated', 1000, undefined);
+            this.ts.showToast('Profile Updated', 3000, undefined);
 
             let userObj = this.auth.getLoggedInUser();
             if (userObj.userDetails) {

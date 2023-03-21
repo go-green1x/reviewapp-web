@@ -52,7 +52,7 @@ export class ContactUsComponent {
               subject: '',
               message: ''
             });
-            this.ts.showToast('Email Sent', 1000, undefined);
+            this.ts.showToast('Email Sent', 3000, undefined);
           }
         });
       }
