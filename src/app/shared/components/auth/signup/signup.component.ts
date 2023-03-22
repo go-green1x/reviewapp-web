@@ -84,7 +84,7 @@ export class SignupComponent {
         this.auth.signup(formData).subscribe((result: any) => {
           if (result.ok == true) {
               form.reset();
-              this.ts.showToast('Account Created Successsfullt', 3000, undefined);
+              this.ts.showToast('Account Created Successsfully', 3000, undefined);
           }
         });
       }
