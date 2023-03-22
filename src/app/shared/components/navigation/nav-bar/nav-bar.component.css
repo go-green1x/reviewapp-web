@@ -33,3 +33,9 @@
   nav {
     background-color: #6d4aff42;
   }
+
+  .dropdown-menu {
+    max-width: 100vw;
+    right: 0;
+    left: auto;
+  }

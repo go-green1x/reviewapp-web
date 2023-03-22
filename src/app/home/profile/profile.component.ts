@@ -80,16 +80,21 @@ export class ProfileComponent {
         let dateOfBirth = this.profileForm.value['dateOfBirth'];
 
         let first_name = fullName.split(' ')[0];
-        let last_name = fullName.substring(first_name.length);
+        let last_name;
 
-        let payload = {
-          "email" : email,
-          "first_name" : first_name,
-          "last_name" : last_name,
-          "country" : country,
-          "city" : city,
-          "address" : address,
-          "date_of_birth" : dateOfBirth
+        let payload: any = {
+          "email": email,
+          "first_name": first_name,
+          // "last_name" : last_name,
+          "country": country,
+          "city": city,
+          "address": address,
+          "date_of_birth": dateOfBirth
+        }
+
+        if (fullName.split(' ').length > 1) {
+          last_name = fullName.substring(first_name.length);
+          payload['last_name'] = last_name;
         }
 
         this.auth.updateProfilePic(payload).subscribe((result: any) => {
@@ -105,10 +110,10 @@ export class ProfileComponent {
               userObj.userDetails.profile.country = result.body.country;
               userObj.userDetails.email = result.body.email;
               userObj.userDetails.first_name = result.body.first_name;
-              userObj.userDetails.last_name = result.body.last_name;
+              userObj.userDetails.last_name = result.body?.last_name ? result.body?.last_name : '';
               localStorage.setItem("LoggedInUser", JSON.stringify(userObj));
             }
-  
+
             if (this.user?.profile.upload) {
               this.auth.user!.profile!.address = this.urls.url + '/' + result.body.address;
               this.auth.user!.profile!.city = this.urls.url + '/' + result.body.city;
@@ -116,7 +121,7 @@ export class ProfileComponent {
               this.auth.user!.profile!.date_of_birth = this.urls.url + '/' + result.body.date_of_birth;
               this.auth.user!.email = this.urls.url + '/' + result.body.email;
               this.auth.user!.first_name = result.body.first_name;
-              this.auth.user!.last_name = result.body.last_name;
+              this.auth.user!.last_name = result.body?.last_name ? result.body.last_name : '';
             }
 
           }

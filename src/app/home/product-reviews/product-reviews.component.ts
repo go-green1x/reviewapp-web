@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 
 import { PpService } from 'src/app/shared/services/pp.service';
 import { UrlsService } from 'src/app/shared/services/urls.service';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastService } from 'src/app/shared/services/toast.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { Routes_URL } from 'src/app/shared/constants/routes';
 
 @Component({
   selector: 'app-product-reviews',
@@ -15,14 +16,15 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 export class ProductReviewsComponent {
   constructor(private pp: PpService, public url: UrlsService,
     private _activatedRoute: ActivatedRoute, private fb: FormBuilder,
-    private ts: ToastService, public auth: AuthService) { }
+    private ts: ToastService, public auth: AuthService, private route: Router) { }
   productId!: number;
   productDetails: any;
   reviewForm!: FormGroup;
   updateReviewForm!: FormGroup;
-  reviewRating!: number;
+  reviewRating: number = 1;
   updateReviewRating!: number;
   editReviewId!: number;
+  public routes_url = Routes_URL;
   ngOnInit() {
     this._activatedRoute.params.subscribe(params => {
       this.productId = params['id'];
@@ -30,18 +32,23 @@ export class ProductReviewsComponent {
     });
 
     this.reviewForm = this.fb.group({
-      rating: ['', [Validators.required]],
+      rating: [1, [Validators.required, Validators.min(1)]],
       review: ['', [Validators.required, Validators.maxLength(200)]]
     });
     this.updateReviewForm = this.fb.group({
-      rating: ['', [Validators.required]],
+      rating: [1, [Validators.required, Validators.min(1)]],
       review: ['', [Validators.required, Validators.maxLength(200)]]
     });
   }
 
   getProductDetails() {
     this.pp.getProductsReviews(this.productId).subscribe((results: any) => {
-      this.productDetails = results.body;
+      if (results.ok == true) {
+        this.productDetails = results.body;
+      }
+      else {
+        this.route.navigateByUrl('/'+this.routes_url.PRODUCTS);
+      }
     });
   }
 
@@ -61,7 +68,7 @@ export class ProductReviewsComponent {
           if (result.ok == true) {
             this.reviewForm.patchValue({
               review: '',
-              rating: 0
+              rating: 1
             });
             this.productDetails.reviews.push(result.body);
             this.ts.showToast('Review Posted', 3000, undefined);

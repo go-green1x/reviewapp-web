@@ -19,10 +19,10 @@ export class NavBarComponent {
 
   logout() {
     this.auth.logout().subscribe((data) => {
-      if (data.ok == true) {
+      // if (data.ok == true) {
         this.auth.removetoken();
         this.route.navigateByUrl('/'+this.routes_url.AUTH+'/'+this.routes_url.SIGN_IN);
-      }
+      // }
     });
   }
 }

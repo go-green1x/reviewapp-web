@@ -28,11 +28,13 @@ export class ProductsComponent {
   }
 
   separateByCategory(products: any) {
-    for (const product of products) {
-      if (!this.productsByCategory[product.category]) {
-        this.productsByCategory[product.category] = [];
+    if (products) {
+      for (const product of products) {
+        if (!this.productsByCategory[product.category]) {
+          this.productsByCategory[product.category] = [];
+        }
+        this.productsByCategory[product.category].push(product);
       }
-      this.productsByCategory[product.category].push(product);
     }
   }
 
